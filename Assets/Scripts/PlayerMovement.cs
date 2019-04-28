@@ -8,13 +8,16 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement Properties")]
     public float speed = 8f;                //Player speed
-    //public float crouchSpeedDivisor = 3f;   //Speed reduction when crouching
+    public float crouchSpeedDivisor = 3f;   //Speed reduction when crouching
+    public float slideSpeedDivesor = 3f;
     public float coyoteDuration = .05f;     //How long the player can jump after falling
+    public float attackDuration = .3f;     //How long the player can continue attacking after previous attack
     public float maxFallSpeed = -25f;       //Max speed player can fall
 
     [Header("Jump Properties")]
     public float jumpForce = 6.3f;          //Initial force of jump
     public float hangingJumpForce = 15f;    //Force of wall hanging jumo
+    public float slidingJumpForce = 4f;
 
     [Header("Environment Check Properties")]
     public float footOffset = .4f;          //X Offset of feet raycast
@@ -26,10 +29,14 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;           //Layer of the ground
 
     [Header("Status Flags")]
+    public bool isCharacterDirectionFlipped;
     public bool isOnGround;                 //Is the player on the ground?
     public bool isJumping;                  //Is player jumping?
     public bool isHanging;                  //Is player hanging?
     public bool isCrouching;
+    public bool isAttacking;
+    public bool isSliding;
+    public bool canStand;
 
     PlayerInput input;                      //The current inputs for the player
     BoxCollider2D bodyCollider;             //The collider component
@@ -38,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
     float jumpTime;                         //Variable to hold jump duration
     float coyoteTime;                       //Variable to hold coyote duration
+    float attackTime;
     float playerHeight;                     //Height of the player
 
     float originalXScale;                   //Original scale on X axis
@@ -49,6 +57,29 @@ public class PlayerMovement : MonoBehaviour
     Vector2 colliderCrouchOffset;           //Offset of the crouching collider
 
     const float smallAmount = .05f;         //A small amount used for hanging position
+
+    float xVelocity = 0;
+    float yVelocity = 0;
+
+    private PlayerCombo attack = new PlayerCombo(new string[] { "attack" });
+    private PlayerCombo doubleAttack = new PlayerCombo(new string[] { "attack", "attack" });
+    private PlayerCombo trippleAttack = new PlayerCombo(new string[] { "attack", "attack", "attack" });
+    private PlayerCombo airAttack = new PlayerCombo(new string[] { "attack" });
+    private PlayerCombo doubleAirAttack = new PlayerCombo(new string[] { "attack", "attack" });
+    private PlayerCombo trippleAirAttack = new PlayerCombo(new string[] { "attack", "attack", "attack" });
+    private PlayerCombo shoot = new PlayerCombo(new string[] { "shoot" });
+    private PlayerCombo airShoot = new PlayerCombo(new string[] { "shoot" });
+
+    readonly int animAttack1 = Animator.StringToHash("FirstAttack");
+    readonly int animAttack2 = Animator.StringToHash("SecondAttack");
+    readonly int animAttack3 = Animator.StringToHash("ThirdAttack");
+
+    readonly int animAirAttack1 = Animator.StringToHash("FirstAirAttack");
+    readonly int animAirAttack2 = Animator.StringToHash("SecondAirAttack");
+    readonly int animAirAttack3 = Animator.StringToHash("ThirdAirAttackBegin");
+
+    readonly int animShoot = Animator.StringToHash("Shoot");
+    readonly int animAirShoot = Animator.StringToHash("AirShoot");
 
 
     void Start()
@@ -70,8 +101,10 @@ public class PlayerMovement : MonoBehaviour
         colliderStandOffset = bodyCollider.offset;
 
         //Calculate crouching collider size and offset
-        colliderCrouchSize = new Vector2(bodyCollider.size.x, bodyCollider.size.y / 2f);
-        colliderCrouchOffset = new Vector2(bodyCollider.offset.x, bodyCollider.offset.y / 2f);
+        colliderCrouchSize = new Vector2(bodyCollider.size.x, bodyCollider.size.y / 1.5f);
+        colliderCrouchOffset = new Vector2(bodyCollider.offset.x, bodyCollider.offset.y / 1.5f);
+
+        isCharacterDirectionFlipped = false;
     }
 
     void FixedUpdate()
@@ -98,6 +131,9 @@ public class PlayerMovement : MonoBehaviour
         if (leftCheck || rightCheck)
         {
             isOnGround = true;
+            canStand = true;
+            input.attackButton.enabled = true;
+            input.shootButton.enabled = true;
         }
         animator.SetBool("isOnGround", isOnGround);
         //Cast the ray to check above the player's head
@@ -110,6 +146,12 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit2D blockedCheck = Raycast(new Vector2(footOffset * direction, playerHeight), grabDir, grabDistance);
         RaycastHit2D ledgeCheck = Raycast(new Vector2(reachOffset * direction, playerHeight), Vector2.down, grabDistance);
         RaycastHit2D wallCheck = Raycast(new Vector2(footOffset * direction, eyeHeight), grabDir, grabDistance);
+
+        if (isOnGround && isCrouching && headCheck && input.verticalMove > -.5f)
+            canStand = false;
+        else
+            canStand = true;
+
 
         //If the player is off the ground AND is not hanging AND is falling AND
         //found a ledge AND found a wall AND the grab is NOT blocked...
@@ -129,6 +171,10 @@ public class PlayerMovement : MonoBehaviour
             //...finally, set isHanging to true
             isHanging = true;
         }
+
+        if (!isOnGround && rigidBody.velocity.y < 0f && wallCheck)
+            isSliding = true;
+        
     }
 
     void GroundMovement()
@@ -136,13 +182,11 @@ public class PlayerMovement : MonoBehaviour
         //If currently hanging, the player can't move to exit
         if (isHanging)
             return;
-
+        if (isSliding)
+            return;
         //Handle crouching input. If holding the crouch button but not crouching, crouch
-        if (input.verticalMove <= -.5f && !isCrouching && isOnGround)
-        {
+        if ((input.verticalMove <= -.5f && !isCrouching && isOnGround) || !canStand)
             Crouch();
-            
-        }
         //Otherwise, if not holding crouch but currently crouching, stand up
         else if (input.verticalMove > -.5f && isCrouching)
             StandUp();
@@ -153,8 +197,8 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isCrouching", isCrouching);
 
         //Calculate the desired velocity based on inputs
-        float xVelocity = 0;
-        if (input.horizontalMove >= .5f || input.horizontalMove <= -.5f)
+        xVelocity = 0;
+        if (input.horizontalMove >= .25f || input.horizontalMove <= -.25f)
             xVelocity = speed * input.horizontalMove;
         animator.SetInteger("speed", (int)xVelocity);
 
@@ -162,12 +206,47 @@ public class PlayerMovement : MonoBehaviour
         if (xVelocity * direction < 0f)
             FlipCharacterDirection();
 
+        if (isCrouching)
+            xVelocity /= crouchSpeedDivisor;
+
         //Apply the desired velocity 
-        rigidBody.velocity = new Vector2(xVelocity, rigidBody.velocity.y);
+
 
         //If the player is on the ground, extend the coyote time window
         if (isOnGround)
+        {
             coyoteTime = Time.time + coyoteDuration;
+        }
+
+        if (input.attackPressed && isOnGround)
+        {
+            attackTime = Time.time + attackDuration;
+            if (attackTime > Time.time)
+                isAttacking = true;
+            if (trippleAttack.Check())
+                animator.Play(animAttack3);
+            else if (doubleAttack.Check())
+                animator.Play(animAttack2);
+            else if (attack.Check())
+                animator.Play(animAttack1);
+        }
+        else if (input.shootPressed && isOnGround)
+        {
+            attackTime = Time.time + attackDuration;
+            if (attackTime > Time.time)
+                isAttacking = true;
+            if (shoot.Check())
+                animator.Play(animShoot);
+        }
+        else if ((!input.attackPressed && attackTime < Time.time) || (!input.shootPressed && attackTime < Time.time))
+            isAttacking = false;
+
+        if (isAttacking)
+            xVelocity /= crouchSpeedDivisor;
+
+        rigidBody.velocity = new Vector2(xVelocity, rigidBody.velocity.y);
+
+        animator.SetBool("isAttacking", isAttacking);
     }
 
     void MidAirMovement()
@@ -176,7 +255,7 @@ public class PlayerMovement : MonoBehaviour
         if (isHanging)
         {
             //If crouch is pressed...
-            if (input.crouchPressed)
+            if (input.verticalMove <= -.5f)
             {
                 //...let go...
                 isHanging = false;
@@ -198,13 +277,43 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        if (isSliding)
+        {
+            yVelocity = rigidBody.velocity.y / slideSpeedDivesor;
+            xVelocity = 0;
+            input.attackButton.enabled = false;
+            input.shootButton.enabled = false;
+            rigidBody.velocity = new Vector2(xVelocity, yVelocity);
+
+            if (isOnGround)
+            {
+                isSliding = false;
+                return;
+            }
+
+            //If jump is pressed...
+            if (input.jumpPressed)
+            {
+                //...let go...
+                isSliding = false;
+                input.attackButton.enabled = true;
+                input.shootButton.enabled = true;
+                //...set the rigidbody to dynamic and apply a jump force...
+                FlipCharacterDirection();
+                rigidBody.AddForce(slidingJumpForce*(transform.up + (isCharacterDirectionFlipped ? -transform.right : transform.right)), ForceMode2D.Impulse);
+                //...and exit
+                return;
+            }
+            
+        }
+        animator.SetBool("isSliding", isSliding);
         //If the jump key is pressed AND the player isn't already jumping AND EITHER
         //the player is on the ground or within the coyote time window...
         if (input.jumpPressed && !isJumping && (isOnGround || coyoteTime > Time.time))
         {
 
             //...The player is no longer on the groud and is jumping...
-            isOnGround = false;
+            
             isJumping = true;
 
             //...add the jump force to the rigidbody...
@@ -213,7 +322,7 @@ public class PlayerMovement : MonoBehaviour
             //...and tell the Audio Manager to play the jump audio
             //AudioManager.PlayJumpAudio();
         }
-        else if (isOnGround)
+        else if (rigidBody.velocity.y == 0 || isSliding)
             isJumping = false;
         //Otherwise, if currently within the jump time window...
         //else if (isJumping)
@@ -226,18 +335,49 @@ public class PlayerMovement : MonoBehaviour
         //    if (jumpTime <= Time.time)
         //        isJumping = false;
         //}
-        
+
+        if (input.attackPressed && !isOnGround)
+        {
+            attackTime = Time.time + attackDuration/2;
+            if (attackTime > Time.time)
+                isAttacking = true;
+            if (trippleAirAttack.Check())
+            {
+                input.attackButton.enabled = false;
+                input.shootButton.enabled = false;
+                animator.Play(animAirAttack3);
+                rigidBody.AddForce(new Vector2(0f, -jumpForce), ForceMode2D.Impulse);
+            }
+            else if (doubleAirAttack.Check())
+                animator.Play(animAirAttack2);
+            else if (airAttack.Check())
+                animator.Play(animAirAttack1);
+        }
+        else if (input.shootPressed && !isOnGround)
+        {
+            attackTime = Time.time + attackDuration;
+            if (attackTime > Time.time)
+                isAttacking = true;
+            if (airShoot.Check())
+                animator.Play(animAirShoot);
+        }
+        else if ((!input.attackPressed && attackTime < Time.time) || (!input.shootPressed && attackTime < Time.time))
+            isAttacking = false;
+
         //If player is falling to fast, reduce the Y velocity to the max
         if (rigidBody.velocity.y < maxFallSpeed)
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, maxFallSpeed);
-        animator.SetInteger("speedY", (int)rigidBody.velocity.y);
         animator.SetBool("isJumping", isJumping);
+        animator.SetInteger("speedY", (int)rigidBody.velocity.y);
+        
     }
 
     void FlipCharacterDirection()
     {
         //Turn the character by flipping the direction
         direction *= -1;
+
+        isCharacterDirectionFlipped = !isCharacterDirectionFlipped;
 
         //Record the current scale
         Vector3 scale = transform.localScale;
@@ -299,3 +439,4 @@ public class PlayerMovement : MonoBehaviour
         return hit;
     }
 }
+

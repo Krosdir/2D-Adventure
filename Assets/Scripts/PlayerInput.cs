@@ -13,13 +13,17 @@ public class PlayerInput : MonoBehaviour
     public float verticalDPadThreshold = .5f;       //Threshold touch pad inputs
     public Joystick joystick;                   //Reference to Thumbstick
     public TouchButton jumpButton;                  //Reference to jump TouchButton
+    public TouchButton attackButton;                //Reference to attack TouchButton
+    public TouchButton shootButton;                //Reference to alternative attack TouchButton
 
     [HideInInspector] public float horizontalMove;      //Float that stores horizontal input
     [HideInInspector] public float verticalMove;
-    [HideInInspector] public bool jumpHeld;         //Bool that stores jump pressed
+    //[HideInInspector] public bool jumpHeld;         //Bool that stores jump pressed
     [HideInInspector] public bool jumpPressed;      //Bool that stores jump held
-    [HideInInspector] public bool crouchHeld;       //Bool that stores crouch pressed
-    [HideInInspector] public bool crouchPressed;    //Bool that stores crouch held
+    //[HideInInspector] public bool crouchHeld;       //Bool that stores crouch pressed
+    //[HideInInspector] public bool crouchPressed;    //Bool that stores crouch held
+    [HideInInspector] public bool attackPressed;
+    [HideInInspector] public bool shootPressed;
 
     bool dPadCrouchPrev;                            //Previous values of touch Thumbstick
     bool readyToClear;                              //Bool used to keep input in sync
@@ -35,7 +39,7 @@ public class PlayerInput : MonoBehaviour
         //    return;
 
         //Process keyboard, mouse, gamepad (etc) inputs
-        ProcessInputs();
+        //ProcessInputs();
         //Process mobile (touch) inputs
         ProcessTouchInputs();
 
@@ -61,25 +65,27 @@ public class PlayerInput : MonoBehaviour
         horizontalMove = 0f;
         verticalMove = 0f;
         jumpPressed = false;
-        jumpHeld = false;
-        crouchPressed = false;
-        crouchHeld = false;
+        //jumpHeld = false;
+        //crouchPressed = false;
+        //crouchHeld = false;
+        attackPressed = false;
+        shootPressed = false;
 
         readyToClear = false;
     }
 
-    void ProcessInputs()
-    {
-        //Accumulate horizontal axis input
-        horizontalMove += Input.GetAxis("Horizontal");
+    //void ProcessInputs()
+    //{
+    //    //Accumulate horizontal axis input
+    //    horizontalMove += Input.GetAxis("Horizontal");
 
-        //Accumulate button inputs
-        jumpPressed = jumpPressed || Input.GetButtonDown("Jump");
-        jumpHeld = jumpHeld || Input.GetButton("Jump");
+    //    //Accumulate button inputs
+    //    jumpPressed = jumpPressed || Input.GetButtonDown("Jump");
+    //    jumpHeld = jumpHeld || Input.GetButton("Jump");
 
-        //crouchPressed = crouchPressed || Input.GetButtonDown("Crouch");
-        //crouchHeld = crouchHeld || Input.GetButton("Crouch");
-    }
+    //    //crouchPressed = crouchPressed || Input.GetButtonDown("Crouch");
+    //    //crouchHeld = crouchHeld || Input.GetButton("Crouch");
+    //}
 
     void ProcessTouchInputs()
     {
@@ -97,6 +103,11 @@ public class PlayerInput : MonoBehaviour
         //Accumulate jump button input
         jumpPressed = jumpPressed || jumpButton.GetButtonDown();
         //jumpHeld = jumpHeld || jumpButton.GetButton();
+
+        //Accumulate attack button input
+        attackPressed = attackPressed || attackButton.GetButtonDown();
+
+        shootPressed = shootPressed || shootButton.GetButtonDown();
 
         //Using thumbstick, accumulate crouch input
         //bool dPadCrouch = thumbstickInput.y <= -verticalDPadThreshold;
