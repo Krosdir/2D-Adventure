@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - Traps
+  - Enemies
   layers:
   - Default
   - TransparentFX
@@ -14,6 +17,8 @@ TagManager:
   - 
   - 
   - Ground
+  - Traps
+  - Background
   - 
   - 
   - 
@@ -33,10 +38,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Enemies
+  - Player
   m_SortingLayers:
   - name: Default
     uniqueID: 0
