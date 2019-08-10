@@ -30,13 +30,6 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //hit = Physics2D.Raycast(transform.position + transform.up * 0.5f + transform.right * direction.x * 0.5f, direction);
-        //if (hit.transform.tag != tag)
-        //{
-        //    Debug.Log(hit.transform.name);
-        //    Destroy(gameObject);
-        //}
-
         transform.position = Vector3.MoveTowards(transform.position, transform.position + Direction, speed * Time.deltaTime);
         sprite.flipX = Direction.x < 0.1f;
     }

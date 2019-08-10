@@ -8,14 +8,12 @@ public class GameManager : MonoBehaviour
     static GameManager current;
     PlayerMovement player;
     
-
     public float deathSequenceDuration = 1.5f;  //How long player death takes before restarting
 
     //Door lockedDoor;                            //The scene door
     //SceneFader sceneFader;                      //The scene fader
 
     bool isGameOver;                            //Is the game currently over?
-
 
     void Awake()
     {
@@ -48,8 +46,6 @@ public class GameManager : MonoBehaviour
         //If the game is over, exit
         if (isGameOver)
             return;
-
-
     }
 
     //public static void RegisterSceneFader(SceneFader fader)

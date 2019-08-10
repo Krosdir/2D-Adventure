@@ -7,6 +7,7 @@ public class Creatures : MonoBehaviour
     [Header("Gizmos")]
     [SerializeField] protected Transform attackDetection;
     [SerializeField] protected float attackRadius;
+    public bool drawDebugRaycasts = true;   //Should the environment checks be visualized
 
     protected HealthSystem healthSystem = new HealthSystem(100);
     public Transform resHealthBar;
@@ -14,6 +15,7 @@ public class Creatures : MonoBehaviour
 
     protected Projectile projectile;
     protected Projectile newProjectile;
+
     [Header("Movement Properties")]
     public float speed = 8f;                //Player speed
 
@@ -31,18 +33,16 @@ public class Creatures : MonoBehaviour
     protected float originalXScale;                   //Original scale on X axis
     protected int direction = 1;                      //Direction player is facing
 
-    protected RaycastHit2D groundInfo;
-    public Transform groundDetection;
-    protected float groundDetectionDistance;
-    public float distanceGround = 1f;
-
     protected BoxCollider2D bodyCollider;             //The collider component
-    [HideInInspector] public Rigidbody2D rigidBody;                  //The rigidbody component
+    [HideInInspector] public Rigidbody2D rigidBody;   //The rigidbody component
     protected Animator animator;
 
     static protected PlayerMovement player;
 
-    
+    protected RaycastHit2D groundCheck;
+    protected RaycastHit2D wallCheck;
+
+
     protected int animEnemyHit;
 
     protected LayerMask bgMask;
@@ -59,6 +59,7 @@ public class Creatures : MonoBehaviour
         }
         player = FindObjectOfType<PlayerMovement>();
         playerMask = LayerMask.GetMask("Player");
+        groundMask = LayerMask.GetMask("Ground");
         bgMask = LayerMask.GetMask("Background");
         bgMask = ~bgMask;
     }
@@ -72,26 +73,31 @@ public class Creatures : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+    }
+
+    void IgnoreEnemyZOV()
+    {
+        if (newProjectile.Parent == GetComponent<PlayerMovement>().gameObject)
+        {
+            //Ignoring all enemy zones of vision
+            for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemies").Length; i++)
+            {
+                newProjectile.zoneOfVisionOfCreatures.Add(GameObject.FindGameObjectsWithTag("Enemies")[i].GetComponentInChildren<PolygonCollider2D>());
+                Physics2D.IgnoreCollision(newProjectile.GetComponent<BoxCollider2D>(), newProjectile.zoneOfVisionOfCreatures[i]);
+            }
+        }
     }
 
     protected void Shoot()
     {
         Vector3 position = transform.position;
         position.x = (isCharacterDirectionFlipped ? position.x += -1f : position.x += 1f);
-        position.y += 0.7f;
+        position.y += 0.7f;   //Projectile release point relative to the character
         newProjectile = Instantiate(projectile, position, projectile.transform.rotation) as Projectile;
         newProjectile.Parent = gameObject;
         newProjectile.Direction = newProjectile.transform.right * (isCharacterDirectionFlipped ? -1.0f : 1.0f);
-        if (newProjectile.Parent == GetComponent<PlayerMovement>().gameObject)
-        {
-            //Ignoring all enemies's zones of vision
-            for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemies").Length; i++)
-            {
-                newProjectile.zoneOfVisionOfCreatures.Add(GameObject.FindGameObjectsWithTag("Enemies")[i].GetComponentInChildren<PolygonCollider2D>());
-                Physics2D.IgnoreCollision(newProjectile.GetComponent<BoxCollider2D>(), newProjectile.zoneOfVisionOfCreatures[i]);
-            }
-            
-        }
+        IgnoreEnemyZOV();
     }
 
     protected virtual void FlipCharacterDirection()
@@ -120,7 +126,16 @@ public class Creatures : MonoBehaviour
         }
     }
 
-    // функция возвращает ближайший объект из массива, относительно указанной позиции
+    protected virtual void OnTriggerStay2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Traps"))
+        {
+            isHit = true;
+            healthSystem.Damage(1);
+        }
+    }
+
+    // the function returns the nearest object from the array, relative to the specified position
     GameObject NearTarget(Vector3 position, Collider2D[] array)
     {
         Collider2D current = null;
@@ -154,7 +169,7 @@ public class Creatures : MonoBehaviour
             GameObject obj = NearTarget(point, colliders);
             if (obj != null && obj.GetComponent<Creatures>())
             {
-                ////////////////////////////////////////
+                //Identifying the character to be damaged
                 if (obj.GetComponent<PlayerMovement>())
                 {
                     obj.GetComponent<PlayerMovement>().healthSystem.Damage(10);
@@ -165,11 +180,10 @@ public class Creatures : MonoBehaviour
                     obj.GetComponent<Creatures>().healthSystem.Damage(33);
                     obj.GetComponent<Creatures>().isHit = true;
                 }
-                //obj.GetComponent<Unit>().HP -= damage;
             }
             return;
         }
-
+        //Damage to all characters within the radius of attack
         foreach (Collider2D hit in colliders)
         {
             if (hit.GetComponent<Creatures>())
@@ -186,5 +200,33 @@ public class Creatures : MonoBehaviour
                 }
             }
         }
+    }
+
+    protected RaycastHit2D Raycast(Vector2 offset, Vector2 rayDirection, float length)
+    {
+        //Call the overloaded Raycast() method using the ground layermask and return 
+        //the results
+        return Raycast(offset, rayDirection, length, groundMask);
+    }
+
+    RaycastHit2D Raycast(Vector2 offset, Vector2 rayDirection, float length, LayerMask mask)
+    {
+        //Record the player's position
+        Vector2 pos = transform.position;
+
+        //Send out the desired raycasr and record the result
+        RaycastHit2D hit = Physics2D.Raycast(pos + offset, rayDirection, length, mask);
+
+        //If we want to show debug raycasts in the scene...
+        if (drawDebugRaycasts)
+        {
+            //...determine the color based on if the raycast hit...
+            Color color = hit ? Color.red : Color.green;
+            //...and draw the ray in the scene view
+            Debug.DrawRay(pos + offset, rayDirection * length, color);
+        }
+
+        //Return the results of the raycast
+        return hit;
     }
 }

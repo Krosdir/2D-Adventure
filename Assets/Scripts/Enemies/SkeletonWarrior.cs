@@ -23,13 +23,12 @@ public class SkeletonWarrior : Creatures
     public float searchingTime = 5f;
     float searchTime = 0;
 
-    public float flippingTime = 1f;
+    public float flippingTime = 1f;             //Time to flip character while searching
     float flipTime = 0;
 
     public bool isChasing = false;
     public bool isSearching = false;
     
-
     public float attackDistance = 2f;
 
     // Start is called before the first frame update
@@ -38,8 +37,6 @@ public class SkeletonWarrior : Creatures
         rigidBody = GetComponent<Rigidbody2D>();
         bodyCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
-
-        distanceGroundOriginal = distanceGround;
 
         //Record the original x scale of the player
         originalXScale = transform.localScale.x;
@@ -57,131 +54,145 @@ public class SkeletonWarrior : Creatures
         animEnemyHit = Animator.StringToHash("Hurt");
 
         zoneOfVision = GetComponentInChildren<PolygonCollider2D>();
-        groundMask = LayerMask.GetMask("Ground");
+
+    }
+
+    void DinamicZOV()
+    {
+        //Changing ZoneOfVision
+        if (!zoneOfVision.IsTouchingLayers(groundMask))
+            return;
+
+        float xTouchPoint = transform.position.x;
+        if (zoneOfVision.transform.localScale.x > 0)
+        {
+            float smallerZOV = zoneOfVision.transform.localScale.x - 0.1f;
+            zoneOfVision.transform.localScale = new Vector3(smallerZOV, 1, 1);
+        }
+        else
+        {
+            float biggerZOV = zoneOfVision.transform.localScale.x + 0.1f;
+            zoneOfVision.transform.localScale = new Vector3(biggerZOV, 1, 1);
+        }
+    }
+
+    void Die(bool isDead)
+    {
+        //If dead, then destroying the object, reset states and adding a dead body
+        if (!isDead)
+            return;
+
+        isHit = false;
+        isChasing = false;
+        isSearching = false;
+        GameObject deadSkeletonWarrior = Resources.Load<GameObject>("DeadCreatures/DeadSkeletonWarrior");
+        Vector3 position = transform.position;
+        Vector3 scale = transform.localScale;
+        rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
+        deadSkeletonWarrior.transform.position = position;
+        deadSkeletonWarrior.transform.localScale = scale;
+        if (dieTime < Time.time)
+        {
+            Destroy(gameObject);
+            Instantiate(deadSkeletonWarrior);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
-        //Changing ZoneOfVision
-        if (zoneOfVision.IsTouchingLayers(groundMask))
-        {
-            float xTouchPoint = transform.position.x;
-            if (zoneOfVision.transform.localScale.x > 0)
-                zoneOfVision.transform.localScale = new Vector3(zoneOfVision.transform.localScale.x - 0.1f, 1, 1);
-            else
-                zoneOfVision.transform.localScale = new Vector3(zoneOfVision.transform.localScale.x + 0.1f, 1, 1);
-        }
+        //Cast ray for checking ground ((isCharacterDirectionFlipped ? .6f : -.6f) - Костыль для оцентровки, т.к. пивот стоит не по центру)
+        groundCheck = Raycast(new Vector2(isCharacterDirectionFlipped ? -.6f : .6f, colliderStandOffset.y * colliderStandSize.y), Vector2.down, .1f);
+
+        Vector2 grabDir = new Vector2(direction, 0f);
+
+        //Cast ray to look for a wall
+        wallCheck = Raycast(new Vector2(.4f * direction, 1.5f), grabDir, .1f);
+
+        if (isChasing || isSearching)
+            Chase();
+        else
+            Move();
+
+        DinamicZOV();
 
         if (healthSystem.GetHealth() == 0 && !isDead)
         {
             isDead = true;
             dieTime = Time.time + dyingTime;
         }
-        //Death Checking
-        if (isDead)
-        {
-            isHit = false;
-            isChasing = false;
-            isSearching = false;
-            GameObject deadSkeletonWarrior = Resources.Load<GameObject>("DeadCreatures/DeadSkeletonWarrior");
-            Vector3 position = transform.position;
-            Vector3 scale = transform.localScale;
-            rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
-            deadSkeletonWarrior.transform.position = position;
-            deadSkeletonWarrior.transform.localScale = scale;
-            if (dieTime < Time.time)
-            {
-                Destroy(gameObject);
-                Instantiate(deadSkeletonWarrior);
-            }
-        }
+
+        Die(isDead);
         if (isHit)
             animator.Play(animEnemyHit);
         isHit = false;
-
         animator.SetInteger("health", healthSystem.GetHealth());
         //Debug.Log(healthSystem.GetHealth());
     }
 
     private void Move()
     {
-        if (!isDead)
+        if (isDead)
+            return;
+
+        rigidBody.velocity = new Vector2(xVelocity, rigidBody.velocity.y);
+        if (Time.time < waitTime)
+            xVelocity = 0f;
+        else
+            xVelocity = speed * direction;
+        if (!wallCheck.collider)
         {
-            rigidBody.velocity = new Vector2(xVelocity, rigidBody.velocity.y);
-            groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distanceGround, bgMask);
-            Debug.DrawRay(groundDetection.position, Vector2.down * distanceGround);
-            if (waitTime > Time.time)
-                xVelocity = 0f;
-            else
-                xVelocity = speed * direction;
-            if (!groundInfo.collider || groundInfo.collider.isTrigger)
+            // The player is noticed - the beginning of the pursuit
+            if (zoneOfVision.IsTouchingLayers(playerMask))
+                isChasing = true;
+            // Stop chasing if there is an abyss in front of the character
+            if (!groundCheck.collider && isChasing)
             {
-                groundInfo = Physics2D.Raycast(new Vector2(groundDetection.position.x, groundDetection.position.y - distanceGround), Vector2.down, distanceGround / 3, bgMask);
-                Chase();
-                Debug.DrawRay(new Vector2(groundDetection.position.x, groundDetection.position.y - distanceGround), Vector2.down * distanceGround / 3, Color.red);
-                if (!groundInfo.collider && isChasing)
-                {
-                    FlipCharacterDirection();
-                    isChasing = false;
-                    zoneOfVision.transform.localScale = new Vector3(1, 1, 1);
-                    waitTime = Time.time + waitingTime;
-                }
-                else if (!groundInfo.collider)
-                {
-                    FlipCharacterDirection();
-                    zoneOfVision.transform.localScale = new Vector3(1, 1, 1);
-                    waitTime = Time.time + waitingTime;
-                }
+                FlipCharacterDirection();
+                isChasing = false;
+                // Returning the field of view to its original size
+                zoneOfVision.transform.localScale = new Vector3(1, 1, 1);
+                waitTime = Time.time + waitingTime;
             }
-            else
+            else if (!groundCheck.collider)
             {
                 FlipCharacterDirection();
                 zoneOfVision.transform.localScale = new Vector3(1, 1, 1);
                 waitTime = Time.time + waitingTime;
             }
-            distanceGround = distanceGroundOriginal;
-            animator.SetInteger("speed", (int)xVelocity);
         }
-        
+        else
+        {
+            FlipCharacterDirection();
+            zoneOfVision.transform.localScale = new Vector3(1, 1, 1);
+            waitTime = Time.time + waitingTime;
+        }
+        animator.SetInteger("speed", (int)xVelocity);
     }
 
-    private void Chase()
+    void SearchPlayer()
     {
-        if (zoneOfVision.IsTouchingLayers(playerMask))
-        {
-            isSearching = false;
-            isChasing = true;
-            xVelocity = speed * direction;
-            distance = transform.position - player.transform.position;
-            if (Math.Abs(distance.x) - attackDistance > -2f && Math.Abs(distance.x) - attackDistance < 0.15f)
-            {
-                attackTime = Time.time + waitingTime / 2f;
-                xVelocity = 0;
-                isAttacking = true;
-            }
-            else
-            {
-                isAttacking = false;
-            }
-            if (attackTime > Time.time)
-                xVelocity = 0;
-        }
-        else if (!zoneOfVision.IsTouchingLayers(playerMask) && isChasing)
+        // Beginning of the search if the player has lost sight
+        if (!zoneOfVision.IsTouchingLayers(playerMask) && isChasing)
         {
             isAttacking = false;
             isSearching = true;
-
-            searchTime = Time.time + searchingTime;
-            flipTime = Time.time;
             isChasing = false;
+            searchTime = Time.time + searchingTime;
+            flipTime = Time.time + flippingTime;
         }
 
+        // Periodic character rotation for player search
         if (isSearching && searchTime > Time.time)
         {
+            if (zoneOfVision.IsTouchingLayers(playerMask) && !zoneOfVision.IsTouchingLayers(groundMask))
+            {
+                isChasing = true;
+                isSearching = false;
+            }
+
             xVelocity = 0;
-            if (flipTime < Time.time)
+            if (Time.time > flipTime)
             {
                 FlipCharacterDirection();
                 zoneOfVision.transform.localScale = new Vector3(1, 1, 1);
@@ -190,6 +201,32 @@ public class SkeletonWarrior : Creatures
         }
         else
             isSearching = false;
+    }
+
+    private void Chase()
+    {
+        if (!player)
+            return;
+
+        xVelocity = speed * direction;
+        rigidBody.velocity = new Vector2(xVelocity, rigidBody.velocity.y);
+        distance = transform.position - player.transform.position;
+        // Checking the distance between the player and the character, to carry out an attack by the character
+        if (Math.Abs(distance.x) - attackDistance > -2f && Math.Abs(distance.x) - attackDistance < 0.15f)
+        {
+            attackTime = Time.time + waitingTime / 2f;
+            xVelocity = 0;
+            isAttacking = true;
+        }
+        else
+        {
+            isAttacking = false;
+        }
+        if (Time.time < attackTime)
+            xVelocity = 0;
+
+        SearchPlayer();
+        
         //Debug.Log("Time: " + Time.time + "; SearchTime: " + searchTime + "; FlipTime: " + flipTime);
         rigidBody.velocity = new Vector2(xVelocity, rigidBody.velocity.y);
         animator.SetInteger("speed", (int)xVelocity);
