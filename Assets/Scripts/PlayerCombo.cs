@@ -11,10 +11,7 @@ public class PlayerCombo : MonoBehaviour
     public float allowedTimeBetweenButtons = 0.3f; //tweak as needed
     private float timeLastButtonPressed;
 
-    public PlayerCombo(string[] b)
-    {
-        buttons = b;
-    }
+    public PlayerCombo(string[] b) => buttons = b;
 
     //usage: call this once a frame. when the combo has been completed, it will return true
     public bool Check()

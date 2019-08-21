@@ -11,10 +11,13 @@ public class JoystickEditor : Editor
     private SerializedProperty axisOptions;
     private SerializedProperty snapX;
     private SerializedProperty snapY;
-    protected SerializedProperty background;
+    private SerializedProperty background;
     private SerializedProperty handle;
 
     protected Vector2 center = new Vector2(0.5f, 0.5f);
+
+    protected SerializedProperty Background { get => background; set => background = value; }
+    public SerializedProperty Handle { get => handle; set => handle = value; }
 
     protected virtual void OnEnable()
     {
@@ -23,8 +26,8 @@ public class JoystickEditor : Editor
         axisOptions = serializedObject.FindProperty("axisOptions");
         snapX = serializedObject.FindProperty("snapX");
         snapY = serializedObject.FindProperty("snapY");
-        background = serializedObject.FindProperty("background");
-        handle = serializedObject.FindProperty("handle");
+        Background = serializedObject.FindProperty("background");
+        Handle = serializedObject.FindProperty("handle");
     }
 
     public override void OnInspectorGUI()
@@ -37,9 +40,9 @@ public class JoystickEditor : Editor
 
         serializedObject.ApplyModifiedProperties();
 
-        if(handle != null)
+        if(Handle != null)
         {
-            RectTransform handleRect = (RectTransform)handle.objectReferenceValue;
+            RectTransform handleRect = (RectTransform)Handle.objectReferenceValue;
             handleRect.anchorMax = center;
             handleRect.anchorMin = center;
             handleRect.pivot = center;
@@ -58,7 +61,7 @@ public class JoystickEditor : Editor
 
     protected virtual void DrawComponents()
     {
-        EditorGUILayout.ObjectField(background, new GUIContent("Background", "The background's RectTransform component."));
-        EditorGUILayout.ObjectField(handle, new GUIContent("Handle", "The handle's RectTransform component."));
+        EditorGUILayout.ObjectField(Background, new GUIContent("Background", "The background's RectTransform component."));
+        EditorGUILayout.ObjectField(Handle, new GUIContent("Handle", "The handle's RectTransform component."));
     }
 }

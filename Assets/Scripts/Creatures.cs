@@ -5,17 +5,17 @@ using UnityEngine;
 public class Creatures : MonoBehaviour
 {
     [Header("Gizmos")]
+    [SerializeField] protected PolygonCollider2D zoneOfVision;
     [SerializeField] protected Transform attackDetection;
     [SerializeField] protected float attackRadius;
-    public bool drawDebugRaycasts = true;   //Should the environment checks be visualized
+    bool drawDebugRaycasts = true;   //Should the environment checks be visualized
 
     protected HealthSystem healthSystem = new HealthSystem(100);
     public Transform resHealthBar;
     HealthBar healthBar;
 
-    protected Projectile projectile;
-    protected Projectile newProjectile;
-
+    [SerializeField] protected Projectile projectile;
+    protected Projectile NewProjectile { get; set; }
     [Header("Movement Properties")]
     public float speed = 8f;                //Player speed
 
@@ -23,15 +23,14 @@ public class Creatures : MonoBehaviour
     public bool isCharacterDirectionFlipped;
     public bool isAttacking;
     public bool isHit;
-    public bool isDead;
+    protected bool isDead;
 
     protected Vector2 colliderStandSize;              //Size of the standing collider
     protected Vector2 colliderStandOffset;            //Offset of the standing collider
-    protected Vector2 colliderCrouchSize;             //Size of the crouching collider
-    protected Vector2 colliderCrouchOffset;           //Offset of the crouching collider
 
     protected float originalXScale;                   //Original scale on X axis
     protected int direction = 1;                      //Direction player is facing
+    protected float dieTime;
 
     protected BoxCollider2D bodyCollider;             //The collider component
     [HideInInspector] public Rigidbody2D rigidBody;   //The rigidbody component
@@ -42,16 +41,16 @@ public class Creatures : MonoBehaviour
     protected RaycastHit2D groundCheck;
     protected RaycastHit2D wallCheck;
 
-
     protected int animEnemyHit;
 
     protected LayerMask bgMask;
     protected LayerMask groundMask;
     protected LayerMask playerMask;
 
+    protected GameObject deadBody;
+
     protected void Awake()
     {
-        projectile = Resources.Load<Projectile>("Arrow");
         if (gameObject.GetComponent<PlayerMovement>())
         {
             healthBar = resHealthBar.GetComponent<HealthBar>();
@@ -76,27 +75,54 @@ public class Creatures : MonoBehaviour
 
     }
 
-    void IgnoreEnemyZOV()
+    protected virtual void PhysicsCheck()
     {
-        if (newProjectile.Parent == GetComponent<PlayerMovement>().gameObject)
+        //Cast ray for checking ground ((isCharacterDirectionFlipped ? .6f : -.6f) - Костыль для оцентровки, т.к. пивот стоит не по центру)
+        groundCheck = Raycast(new Vector2(isCharacterDirectionFlipped ? -.6f : .6f, colliderStandOffset.y * colliderStandSize.y), Vector2.down, .1f);
+
+        Vector2 grabDir = new Vector2(direction, 0f);
+
+        //Cast ray to look for a wall
+        wallCheck = Raycast(new Vector2(.4f * direction, 1.5f), grabDir, .1f);
+    }
+
+    protected void DinamicZOV()
+    {
+        //Changing ZoneOfVision
+        if (!zoneOfVision.IsTouchingLayers(groundMask))
+            return;
+
+        float xTouchPoint = transform.position.x;
+        if (zoneOfVision.transform.localScale.x > 0)
         {
-            //Ignoring all enemy zones of vision
-            for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemies").Length; i++)
-            {
-                newProjectile.zoneOfVisionOfCreatures.Add(GameObject.FindGameObjectsWithTag("Enemies")[i].GetComponentInChildren<PolygonCollider2D>());
-                Physics2D.IgnoreCollision(newProjectile.GetComponent<BoxCollider2D>(), newProjectile.zoneOfVisionOfCreatures[i]);
-            }
+            float smallerZOV = zoneOfVision.transform.localScale.x - 0.1f;
+            zoneOfVision.transform.localScale = new Vector3(smallerZOV, 1, 1);
+        }
+        else
+        {
+            float biggerZOV = zoneOfVision.transform.localScale.x + 0.1f;
+            zoneOfVision.transform.localScale = new Vector3(biggerZOV, 1, 1);
         }
     }
 
-    protected void Shoot()
+    protected void IgnoreEnemyZOV()
+    {
+        //Ignoring all enemy zones of vision
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemies").Length; i++)
+        {
+            NewProjectile.zoneOfVisionOfCreatures.Add(GameObject.FindGameObjectsWithTag("Enemies")[i].GetComponentInChildren<PolygonCollider2D>());
+            Physics2D.IgnoreCollision(NewProjectile.GetComponent<BoxCollider2D>(), NewProjectile.zoneOfVisionOfCreatures[i]);
+        }
+    }
+
+    protected virtual void Shoot()
     {
         Vector3 position = transform.position;
         position.x = (isCharacterDirectionFlipped ? position.x += -1f : position.x += 1f);
         position.y += 0.7f;   //Projectile release point relative to the character
-        newProjectile = Instantiate(projectile, position, projectile.transform.rotation) as Projectile;
-        newProjectile.Parent = gameObject;
-        newProjectile.Direction = newProjectile.transform.right * (isCharacterDirectionFlipped ? -1.0f : 1.0f);
+        NewProjectile = Instantiate(projectile, position, projectile.transform.rotation) as Projectile;
+        NewProjectile.Parent = gameObject;
+        NewProjectile.Direction = NewProjectile.transform.right * (isCharacterDirectionFlipped ? -1.0f : 1.0f);
         IgnoreEnemyZOV();
     }
 
@@ -152,7 +178,7 @@ public class Creatures : MonoBehaviour
             }
         }
 
-        return (current != null) ? current.gameObject : null;
+        return current?.gameObject;
     }
 
     // point - точка контакта
@@ -228,5 +254,26 @@ public class Creatures : MonoBehaviour
 
         //Return the results of the raycast
         return hit;
+    }
+
+    protected void Die(bool isDead)
+    {
+        //If dead, then destroying the object, reset states and adding a dead body
+        if (!isDead)
+            return;
+
+        isHit = false;
+        Vector3 position = transform.position;
+        Vector3 scale = transform.localScale;
+        rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
+        deadBody.transform.position = position;
+        deadBody.transform.localScale = scale;
+        if (deadBody == null)
+            Destroy(gameObject);
+        if (dieTime < Time.time)
+        {
+            Destroy(gameObject);
+            Instantiate(deadBody);
+        }
     }
 }

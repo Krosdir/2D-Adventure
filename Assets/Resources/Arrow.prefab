@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bedc1b6fd587a746ac28917e3d8f2bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zoneOfVisionOfCreatures: []
 --- !u!61 &8084615336366861326
 BoxCollider2D:
   m_ObjectHideFlags: 0

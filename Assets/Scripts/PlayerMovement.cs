@@ -44,6 +44,8 @@ public class PlayerMovement : Creatures
     float attackTime;
     float playerHeight;                     //Height of the player
 
+    Vector2 colliderCrouchSize;             //Size of the crouching collider
+    Vector2 colliderCrouchOffset;           //Offset of the crouching collider
 
     const float smallAmount = .05f;         //A small amount used for hanging position
 
@@ -77,6 +79,7 @@ public class PlayerMovement : Creatures
 
     void Start()
     {
+        projectile = Resources.Load<Projectile>("Arrow");
 
         //Get a reference to the required components
         input = GetComponent<PlayerInput>();
@@ -101,6 +104,7 @@ public class PlayerMovement : Creatures
         colliderCrouchOffset = new Vector2(bodyCollider.offset.x, bodyCollider.offset.y / 1.3f);
 
         isCharacterDirectionFlipped = false;
+        isDead = false;
     }
 
     void FixedUpdate()
@@ -139,7 +143,7 @@ public class PlayerMovement : Creatures
         
     }
 
-    void PhysicsCheck()
+    protected override void PhysicsCheck()
     {
         //Start by assuming the player isn't on the ground and the head isn't blocked
         isOnGround = false;
@@ -382,6 +386,16 @@ public class PlayerMovement : Creatures
     private void AirAttack()
     {
         Action(airAttackDetection.position, airAttackRadius, 30, false);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Projectile projectile = collision.gameObject.GetComponent<Projectile>();
+        if (projectile && gameObject != projectile.Parent)
+        {
+            isHit = true;
+            healthSystem.Damage(30);
+        }
     }
 }
 

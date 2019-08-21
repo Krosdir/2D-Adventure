@@ -5,20 +5,14 @@ using UnityEngine;
 
 public class SkeletonWarrior : Creatures
 {
-    PolygonCollider2D zoneOfVision;
-
-    public float vision = 5f;
-    
     Vector2 distance;
 
-    float distanceGroundOriginal;
     float xVelocity = 0;
 
     public float attackTime;
     public float waitingTime = 3f;              //Time to waiting before going
     float waitTime = 0;
     public float dyingTime = 1.3f;
-    float dieTime;
 
     public float searchingTime = 5f;
     float searchTime = 0;
@@ -28,7 +22,7 @@ public class SkeletonWarrior : Creatures
 
     public bool isChasing = false;
     public bool isSearching = false;
-    
+
     public float attackDistance = 2f;
 
     // Start is called before the first frame update
@@ -41,15 +35,8 @@ public class SkeletonWarrior : Creatures
         //Record the original x scale of the player
         originalXScale = transform.localScale.x;
 
-        //Record initial collider size and offset
-        colliderStandSize = bodyCollider.size;
-        colliderStandOffset = bodyCollider.offset;
-
-        //Calculate crouching collider size and offset
-        colliderCrouchSize = new Vector2(bodyCollider.size.x, bodyCollider.size.y / 1.4f);
-        colliderCrouchOffset = new Vector2(bodyCollider.offset.x, bodyCollider.offset.y / 1.3f);
-
         isCharacterDirectionFlipped = false;
+        isDead = false;
 
         animEnemyHit = Animator.StringToHash("Hurt");
 
@@ -57,57 +44,10 @@ public class SkeletonWarrior : Creatures
 
     }
 
-    void DinamicZOV()
-    {
-        //Changing ZoneOfVision
-        if (!zoneOfVision.IsTouchingLayers(groundMask))
-            return;
-
-        float xTouchPoint = transform.position.x;
-        if (zoneOfVision.transform.localScale.x > 0)
-        {
-            float smallerZOV = zoneOfVision.transform.localScale.x - 0.1f;
-            zoneOfVision.transform.localScale = new Vector3(smallerZOV, 1, 1);
-        }
-        else
-        {
-            float biggerZOV = zoneOfVision.transform.localScale.x + 0.1f;
-            zoneOfVision.transform.localScale = new Vector3(biggerZOV, 1, 1);
-        }
-    }
-
-    void Die(bool isDead)
-    {
-        //If dead, then destroying the object, reset states and adding a dead body
-        if (!isDead)
-            return;
-
-        isHit = false;
-        isChasing = false;
-        isSearching = false;
-        GameObject deadSkeletonWarrior = Resources.Load<GameObject>("DeadCreatures/DeadSkeletonWarrior");
-        Vector3 position = transform.position;
-        Vector3 scale = transform.localScale;
-        rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
-        deadSkeletonWarrior.transform.position = position;
-        deadSkeletonWarrior.transform.localScale = scale;
-        if (dieTime < Time.time)
-        {
-            Destroy(gameObject);
-            Instantiate(deadSkeletonWarrior);
-        }
-    }
-
     // Update is called once per frame
     void Update()
     {
-        //Cast ray for checking ground ((isCharacterDirectionFlipped ? .6f : -.6f) - Костыль для оцентровки, т.к. пивот стоит не по центру)
-        groundCheck = Raycast(new Vector2(isCharacterDirectionFlipped ? -.6f : .6f, colliderStandOffset.y * colliderStandSize.y), Vector2.down, .1f);
-
-        Vector2 grabDir = new Vector2(direction, 0f);
-
-        //Cast ray to look for a wall
-        wallCheck = Raycast(new Vector2(.4f * direction, 1.5f), grabDir, .1f);
+        PhysicsCheck();
 
         if (isChasing || isSearching)
             Chase();
@@ -119,6 +59,9 @@ public class SkeletonWarrior : Creatures
         if (healthSystem.GetHealth() == 0 && !isDead)
         {
             isDead = true;
+            isChasing = false;
+            isSearching = false;
+            deadBody = Resources.Load<GameObject>("DeadCreatures/deadSkeletonWarrior");
             dieTime = Time.time + dyingTime;
         }
 
@@ -145,16 +88,8 @@ public class SkeletonWarrior : Creatures
             // The player is noticed - the beginning of the pursuit
             if (zoneOfVision.IsTouchingLayers(playerMask))
                 isChasing = true;
-            // Stop chasing if there is an abyss in front of the character
-            if (!groundCheck.collider && isChasing)
-            {
-                FlipCharacterDirection();
-                isChasing = false;
-                // Returning the field of view to its original size
-                zoneOfVision.transform.localScale = new Vector3(1, 1, 1);
-                waitTime = Time.time + waitingTime;
-            }
-            else if (!groundCheck.collider)
+            
+            if (!groundCheck.collider)
             {
                 FlipCharacterDirection();
                 zoneOfVision.transform.localScale = new Vector3(1, 1, 1);
@@ -211,6 +146,15 @@ public class SkeletonWarrior : Creatures
         xVelocity = speed * direction;
         rigidBody.velocity = new Vector2(xVelocity, rigidBody.velocity.y);
         distance = transform.position - player.transform.position;
+        // Stop chasing if there is an abyss in front of the character
+        if (!groundCheck.collider && isChasing)
+        {
+            FlipCharacterDirection();
+            isChasing = false;
+            // Returning the field of view to its original size
+            zoneOfVision.transform.localScale = new Vector3(1, 1, 1);
+            waitTime = Time.time + waitingTime;
+        }
         // Checking the distance between the player and the character, to carry out an attack by the character
         if (Math.Abs(distance.x) - attackDistance > -2f && Math.Abs(distance.x) - attackDistance < 0.15f)
         {
@@ -249,7 +193,7 @@ public class SkeletonWarrior : Creatures
             {
                 isSearching = true;
                 searchTime = Time.time + searchingTime;
-                flipTime = Time.time;
+                flipTime = Time.time + flippingTime;
             }
         }
     }

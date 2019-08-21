@@ -1,0 +1,1843 @@
+fileFormatVersion: 2
+guid: acd6f13901ba4684ab6527722d918ab2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4570950867666329260
+    second: fireparts_0
+  - first:
+      213: -4059702876280280409
+    second: fireparts_1
+  - first:
+      213: 6856648565344317037
+    second: fireparts_2
+  - first:
+      213: 8300781434578655765
+    second: fireparts_3
+  - first:
+      213: -8128404647295227664
+    second: fireparts_4
+  - first:
+      213: -4961602128298882972
+    second: fireparts_5
+  - first:
+      213: 7076978931042186345
+    second: fireparts_6
+  - first:
+      213: 4413697688435439544
+    second: fireparts_7
+  - first:
+      213: -2697673194776482500
+    second: fireparts_8
+  - first:
+      213: 2380264127191154845
+    second: fireparts_9
+  - first:
+      213: 5728199453593215127
+    second: fireparts_10
+  - first:
+      213: -6187339871410205356
+    second: fireparts_11
+  - first:
+      213: -1088565491307274391
+    second: fireparts_12
+  - first:
+      213: -7061271330604949492
+    second: fireparts_13
+  - first:
+      213: -215188068777610521
+    second: fireparts_14
+  - first:
+      213: -5946902240948503195
+    second: fireparts_15
+  - first:
+      213: 1988415441799449790
+    second: fireparts_16
+  - first:
+      213: 8487374269710992503
+    second: fireparts_17
+  - first:
+      213: -6195384463005267662
+    second: fireparts_18
+  - first:
+      213: 7345914799391694681
+    second: fireparts_19
+  - first:
+      213: 6176419734728940925
+    second: fireparts_20
+  - first:
+      213: -2242377617923766101
+    second: fireparts_21
+  - first:
+      213: -7071069115334200583
+    second: fireparts_22
+  - first:
+      213: -4872312480080055494
+    second: fireparts_23
+  - first:
+      213: -280594043170496980
+    second: fireparts_24
+  - first:
+      213: -1149021512207331863
+    second: fireparts_25
+  - first:
+      213: -9045817508543744567
+    second: fireparts_26
+  - first:
+      213: 7471531347088668097
+    second: fireparts_27
+  - first:
+      213: -703999383000106982
+    second: fireparts_28
+  - first:
+      213: -7587324941105680174
+    second: fireparts_29
+  - first:
+      213: 7548247778088126814
+    second: fireparts_30
+  - first:
+      213: 3607388107655079056
+    second: fireparts_31
+  - first:
+      213: -4961386944476528602
+    second: fireparts_32
+  - first:
+      213: 649893057342727551
+    second: fireparts_33
+  - first:
+      213: -5769122719798819154
+    second: fireparts_34
+  - first:
+      213: 2271158252914469728
+    second: fireparts_35
+  - first:
+      213: 6350042115566658452
+    second: fireparts_36
+  - first:
+      213: -1078409701045179206
+    second: fireparts_37
+  - first:
+      213: -5718084807750255535
+    second: fireparts_38
+  - first:
+      213: 1822924621479581888
+    second: fireparts_39
+  - first:
+      213: 3271256593568157202
+    second: fireparts_40
+  - first:
+      213: 8053828126472980871
+    second: fireparts_41
+  - first:
+      213: 225556057980397565
+    second: fireparts_42
+  - first:
+      213: 5912359941672670828
+    second: fireparts_43
+  - first:
+      213: 7975641756236886441
+    second: fireparts_44
+  - first:
+      213: -7359839254763441843
+    second: fireparts_45
+  - first:
+      213: -6160751739474347554
+    second: fireparts_46
+  - first:
+      213: 486082004227683804
+    second: fireparts_47
+  - first:
+      213: -1370788298741374004
+    second: fireparts_48
+  - first:
+      213: -4214326230437519845
+    second: fireparts_49
+  - first:
+      213: -4133097136285006983
+    second: fireparts_50
+  - first:
+      213: -8218609856746001018
+    second: fireparts_51
+  - first:
+      213: 540133889351451093
+    second: fireparts_52
+  - first:
+      213: -3922972441784749890
+    second: fireparts_53
+  - first:
+      213: -2730102100252883010
+    second: fireparts_54
+  - first:
+      213: -4696058010638195041
+    second: fireparts_55
+  - first:
+      213: -5428549330863383681
+    second: fireparts_56
+  - first:
+      213: 2450625227456791200
+    second: fireparts_57
+  - first:
+      213: 6635114264322593600
+    second: fireparts_58
+  - first:
+      213: -1271365303586466671
+    second: fireparts_59
+  - first:
+      213: 3159416217206894507
+    second: fireparts_60
+  - first:
+      213: 1555598592510247797
+    second: fireparts_61
+  - first:
+      213: -2239847498701682123
+    second: fireparts_62
+  - first:
+      213: -9148314181369411748
+    second: fireparts_63
+  - first:
+      213: 4609793334455745311
+    second: fireparts_64
+  - first:
+      213: -4157247952307319700
+    second: fireparts_65
+  - first:
+      213: -7552686372247467855
+    second: fireparts_66
+  - first:
+      213: 8389583030979168582
+    second: fireparts_67
+  - first:
+      213: 6968767751868412154
+    second: fireparts_68
+  - first:
+      213: 7626393697566442361
+    second: fireparts_69
+  - first:
+      213: -1578168670959087276
+    second: fireparts_70
+  - first:
+      213: -2465832090612240052
+    second: fireparts_71
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: fireparts_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 232
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df6b44ea6df484540af30f422b0cd70a
+      internalID: 4570950867666329260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_1
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 231
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f96468a07145c3f4bab1aca1261a75b6
+      internalID: -4059702876280280409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_2
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 231
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5e59d91731d0b240a52900a2dbbffe3
+      internalID: 6856648565344317037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_3
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 231
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1355807a04e941146be97f243f4feec0
+      internalID: 8300781434578655765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_4
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 231
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 035da6174dfc8054db77c3ac4fd0d913
+      internalID: -8128404647295227664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_5
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 231
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf445703a01bd804f97203691f0634f4
+      internalID: -4961602128298882972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_6
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 231
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8970d7d75f3832d419f1aeaec85639bd
+      internalID: 7076978931042186345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_7
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 231
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31242cb3a9e33504db27d2dbeba45437
+      internalID: 4413697688435439544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_8
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 201
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00a37283e8e858a47ae125155ebd2274
+      internalID: -2697673194776482500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_9
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 201
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b44c69cc3db29b43bf5bc2cc0defe1d
+      internalID: 2380264127191154845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_10
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 201
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 857c9afbf557c2a4a8b4ef470371c9dd
+      internalID: 5728199453593215127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_11
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 201
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc83d088fe2ce604db04b71642deb495
+      internalID: -6187339871410205356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_12
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 201
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46cd76af58d3ab145a7eedf94e42c5cf
+      internalID: -1088565491307274391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_13
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 200
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daf26a6fafe6f504cb28d1aedc6ad526
+      internalID: -7061271330604949492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_14
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 199
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a433ed7fd6cbf824887c639c009c1ab9
+      internalID: -215188068777610521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_15
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 199
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86b8ebc38607ce243ae7ef0e9b88be21
+      internalID: -5946902240948503195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_16
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 167
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a7961f15d910e24e99129b5b7b68fa0
+      internalID: 1988415441799449790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_17
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 168
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3637ca0d04c025e4b801b67504eee4cb
+      internalID: 8487374269710992503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_18
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 170
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 904e12a12e3828247a4aacd2f74a5adf
+      internalID: -6195384463005267662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_19
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 170
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bce7872e6ec2f7a4c8f978231173540e
+      internalID: 7345914799391694681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_20
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 170
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff0717986d00a7a4e89900b10e2cdc6e
+      internalID: 6176419734728940925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_21
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 169
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b842c87741973ac4e9f90f5741cec2d3
+      internalID: -2242377617923766101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_22
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 169
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9ce4506a8b76e0408671fd4d8a77b7d
+      internalID: -7071069115334200583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_23
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 169
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f831823e77912342b550a9aea9bdc77
+      internalID: -4872312480080055494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_24
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 136
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0de3d797564539141a1662471345c367
+      internalID: -280594043170496980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_25
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 136
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2f858c2bce3cdf49a6cb4aeeb1c68ed
+      internalID: -1149021512207331863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_26
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 136
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a058ccc181f6754184b744a461aadbd
+      internalID: -9045817508543744567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_27
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 136
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce47020ebc68f0f46a4617c34509ca70
+      internalID: 7471531347088668097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_28
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 137
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c224349dcc027f84d8dffdef1caafb10
+      internalID: -703999383000106982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_29
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 137
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d49a55e4197ebda4d847a64ae7156c73
+      internalID: -7587324941105680174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_30
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 137
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de65b8b3a18307d4fabd22b21ce034cb
+      internalID: 7548247778088126814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_31
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 135
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62a74d93b879c104bb6234c7cda193c2
+      internalID: 3607388107655079056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_32
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 104
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3f28f65beb910045a7226ca7d0c2bdb
+      internalID: -4961386944476528602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_33
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 104
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b091ae7e00ace24e977992d81784ea4
+      internalID: 649893057342727551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_34
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 105
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b444ae7f1c75d68439fd935d5c944796
+      internalID: -5769122719798819154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_35
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 104
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d65383e74945ff4181df1f665596478
+      internalID: 2271158252914469728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_36
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 104
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f9dc761393b6154bb91e6842dde2318
+      internalID: 6350042115566658452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_37
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 104
+        width: 7
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12da56fbe8082e648abc105c6f21272b
+      internalID: -1078409701045179206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_38
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 104
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed969982f9e1203478a60c7b2a79ac4a
+      internalID: -5718084807750255535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_39
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 105
+        width: 8
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c213c1b9baa5f64b838d512b9647f31
+      internalID: 1822924621479581888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_40
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 104
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 172e8389ef52daf4ca1b8e18d7dd3e2e
+      internalID: 3271256593568157202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_41
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 104
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7656b94a14d2d6243a4ff974b94f10d9
+      internalID: 8053828126472980871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_42
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 106
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c047456d4c871644eaf4d1fc30aeaef0
+      internalID: 225556057980397565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_43
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 73
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c50878525bf1bf34a974cf6171eb1050
+      internalID: 5912359941672670828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_44
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 74
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3b3a75ca93b539418f351ddf43ac671
+      internalID: 7975641756236886441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_45
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 74
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5f6a9d23692d194398fe3e27df40484
+      internalID: -7359839254763441843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_46
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 74
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c134d3b2ad7021246824c2c1d954a446
+      internalID: -6160751739474347554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_47
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 74
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d45563172e5b8884b8d7c29d92fa9ffa
+      internalID: 486082004227683804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_48
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 73
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19446923cf72d6d4eb31f16845230cf7
+      internalID: -1370788298741374004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_49
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 72
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f26df25208de65428377493609d216b
+      internalID: -4214326230437519845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_50
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 72
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1db0b56f9870f2a478d9814369c074d9
+      internalID: -4133097136285006983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_51
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 41
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cff55f83ef85b0c47a3a1f64c636a8ee
+      internalID: -8218609856746001018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_52
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 41
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebc7d306ce7988c448511b73f6b11a06
+      internalID: 540133889351451093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_53
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 41
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29353471ad08d594a9341e06b109a7e5
+      internalID: -3922972441784749890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_54
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 41
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6d8e91253b94a84485df341e1a4b4ea
+      internalID: -2730102100252883010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_55
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 41
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be1093aeb1095bf4d93dcc9b13a1f574
+      internalID: -4696058010638195041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_56
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 41
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a06bf1d26fefec84fb3def196d8c4449
+      internalID: -5428549330863383681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_57
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 40
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0779eee523c66724e983f346cfaba4fb
+      internalID: 2450625227456791200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_58
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 41
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca1ce661c1229fa4b87a0bc45fdd7dcb
+      internalID: 6635114264322593600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_59
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 9
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93ac8c78670cc824e90c9634616d0ef0
+      internalID: -1271365303586466671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_60
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 9
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ac4e84f72010644ebd72fe83bafe3e8
+      internalID: 3159416217206894507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_61
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 9
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87f6ca0b00420134fb97cd920b8f6775
+      internalID: 1555598592510247797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_62
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 8
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23a7e6627c203fa44931e268049deb84
+      internalID: -2239847498701682123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_63
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 18
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8131b46bc22fa7947b81eaecb95a6c98
+      internalID: -9148314181369411748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_64
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 7
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9744b5b74c8fc904096afc3d7361bd4f
+      internalID: 4609793334455745311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_65
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 19
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 799904acce7c4bf40bba4faffe208bc1
+      internalID: -4157247952307319700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_66
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 7
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d9582cc58eccb843aa13d36a783aa09
+      internalID: -7552686372247467855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_67
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 19
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2e21bcee9cc7374d81812289011734e
+      internalID: 8389583030979168582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_68
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 7
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4874c7b07785db419e6da4d4f32a686
+      internalID: 6968767751868412154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_69
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 17
+        width: 14
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd5198d676ec04d489c0045ae8a30ab1
+      internalID: 7626393697566442361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_70
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 8
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76967cbead31e254ebe1ed842fc8c4cc
+      internalID: -1578168670959087276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireparts_71
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 8
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1afdf18c007df6346bb017e25b063375
+      internalID: -2465832090612240052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

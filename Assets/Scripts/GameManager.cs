@@ -15,10 +15,12 @@ public class GameManager : MonoBehaviour
 
     bool isGameOver;                            //Is the game currently over?
 
+    public static GameManager Current { get => current; set => current = value; }
+
     void Awake()
     {
         //If a Game Manager exists and this isn't it...
-        if (current != null && current != this)
+        if (Current != null && Current != this)
         {
             //...destroy this and exit. There can only be one Game Manager
             Destroy(gameObject);
@@ -26,7 +28,7 @@ public class GameManager : MonoBehaviour
         }
 
         //Set this as the current game manager
-        current = this;
+        Current = this;
 
         //Persis this object between scene reloads
         DontDestroyOnLoad(gameObject);
@@ -71,7 +73,7 @@ public class GameManager : MonoBehaviour
     public static void PlayerDied()
     {
         //If there is no current Game Manager, exit
-        if (current == null)
+        if (Current == null)
             return;
 
         //If we have a scene fader, tell it to fade the scene out
@@ -79,7 +81,7 @@ public class GameManager : MonoBehaviour
         //    current.sceneFader.FadeSceneOut();
 
         //Invoke the RestartScene() method after a delay
-        current.Invoke("RestartScene", current.deathSequenceDuration);
+        Current.Invoke("RestartScene", Current.deathSequenceDuration);
     }
 
     void RestartScene()
