@@ -19,7 +19,7 @@ TagManager:
   - Ground
   - Traps
   - Background
-  - 
+  - Platforms
   - 
   - 
   - 
@@ -41,6 +41,15 @@ TagManager:
   - Enemies
   - Player
   m_SortingLayers:
+  - name: BG
+    uniqueID: 1143238693
+    locked: 0
+  - name: Environment
+    uniqueID: 3768908585
+    locked: 0
+  - name: Character
+    uniqueID: 1888815393
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

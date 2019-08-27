@@ -27,7 +27,7 @@ public class LightFlicker : MonoBehaviour
 
         //Record the intensity and pick a random seed number to start
         intensity = localLight.intensity;
-        offset = Random.Range(0, 1000);
+        offset = Random.Range(0, 500);
     }
 
     void Update()

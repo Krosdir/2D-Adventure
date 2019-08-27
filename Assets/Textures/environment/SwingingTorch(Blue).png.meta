@@ -1,0 +1,331 @@
+fileFormatVersion: 2
+guid: 256714255930ba94b901207d9a308a4f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -391922054224644859
+    second: SwingingTorch(Blue)_23
+  - first:
+      213: -760739936133739265
+    second: SwingingTorch(Blue)_26
+  - first:
+      213: 6856989612748703082
+    second: SwingingTorch(Blue)_27
+  - first:
+      213: -1038692596393551389
+    second: SwingingTorch(Blue)_30
+  - first:
+      213: -7796175795229632385
+    second: SwingingTorch(Blue)_31
+  - first:
+      213: -2704571134876269402
+    second: SwingingTorch(Blue)_32
+  - first:
+      213: -704963263800532842
+    second: SwingingTorch(Blue)_33
+  - first:
+      213: 7319675452125357184
+    second: SwingingTorch(Blue)_34
+  - first:
+      213: 1943774787789137473
+    second: SwingingTorch(Blue)_35
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 50
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SwingingTorch(Blue)_23
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 6
+        width: 39
+        height: 84
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea542d9f60a9489419a730191a24f28a
+      internalID: -391922054224644859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SwingingTorch(Blue)_26
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 7
+        width: 56
+        height: 83
+      alignment: 9
+      pivot: {x: 0.74, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 399b1c930178baa45a6ec2a1eb0024cf
+      internalID: -760739936133739265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SwingingTorch(Blue)_27
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 7
+        width: 62
+        height: 83
+      alignment: 9
+      pivot: {x: 0.72, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: accf1123f40befe459eb7e8083ebf099
+      internalID: 6856989612748703082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SwingingTorch(Blue)_30
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 7
+        width: 61
+        height: 83
+      alignment: 9
+      pivot: {x: 0.17, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1508fc67148b73b4c972cf786930ee41
+      internalID: -1038692596393551389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SwingingTorch(Blue)_31
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 8
+        width: 56
+        height: 82
+      alignment: 9
+      pivot: {x: 0.2, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3eac82835bc9ff04e87ab790f644bf17
+      internalID: -7796175795229632385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SwingingTorch(Blue)_32
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 8
+        width: 35
+        height: 82
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f55c56af94459f46a7e36e9d3fbf5e3
+      internalID: -2704571134876269402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SwingingTorch(Blue)_33
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 6
+        width: 47
+        height: 84
+      alignment: 9
+      pivot: {x: 0.62, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef39ad45a87a5384382676ef4fc0b5b2
+      internalID: -704963263800532842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SwingingTorch(Blue)_34
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 7
+        width: 40
+        height: 83
+      alignment: 9
+      pivot: {x: 0.41, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73b713becf443ee4a8b5675251bd91d5
+      internalID: 7319675452125357184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SwingingTorch(Blue)_35
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 6
+        width: 42
+        height: 84
+      alignment: 9
+      pivot: {x: 0.28, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2c7d7b4ce087cd43920448ffc49fb92
+      internalID: 1943774787789137473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
